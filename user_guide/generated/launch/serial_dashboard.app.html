@@ -132,12 +132,14 @@
 <dd><p>Returns a function that can be used as a Bokeh app.</p>
 <p>The app can be launched using <cite>bokeh serve –show launchscript.py</cite>,
 from the command line where the contents of <cite>launchscript.py</cite> are:</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a>`
-import bokeh.plotting
-import serial_dashboard</p>
-<p>app = serial_dashboard.app()</p>
-<p>app(bokeh.plotting.curdoc())
-<a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bokeh.plotting</span>
+<span class="kn">import</span> <span class="nn">serial_dashboard</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">serial_dashboard</span><span class="o">.</span><span class="n">app</span><span class="p">()</span>
+
+<span class="n">app</span><span class="p">(</span><span class="n">bokeh</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">curdoc</span><span class="p">())</span>
+</pre></div>
+</div>
 <p>To launch the app programmatically with Python, do the following:</p>
 <p>This function should only be used if you need to programmatically
 access the app builder, for example for using the dashboard within
@@ -145,17 +147,19 @@ a Jupyter notebook. To launch a dashboard in its own browser window,
 use <cite>launch()</cite> instead.</p>
 <p>Alternatively, if you want to launch in its own browser window
 programmatically, you can do the following.</p>
-<p><a href="#id7"><span class="problematic" id="id8">``</span></a>`
-from bokeh.server.server import Server
-from bokeh.application import Application
-from bokeh.application.handlers.function import FunctionHandler
-import serial_dashboard</p>
-<p>app = serial_dashboard.app()</p>
-<p>app_dict = {‘/serial-dashboard’: Application(FunctionHandler(app))}
-server = Server(app_dict, port=5006)
-server.show(‘/serial-dashboard’)
-server.run_until_shutdown()
-<a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.server.server</span> <span class="kn">import</span> <span class="n">Server</span>
+<span class="kn">from</span> <span class="nn">bokeh.application</span> <span class="kn">import</span> <span class="n">Application</span>
+<span class="kn">from</span> <span class="nn">bokeh.application.handlers.function</span> <span class="kn">import</span> <span class="n">FunctionHandler</span>
+<span class="kn">import</span> <span class="nn">serial_dashboard</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">serial_dashboard</span><span class="o">.</span><span class="n">app</span><span class="p">()</span>
+
+<span class="n">app_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;/serial-dashboard&#39;</span><span class="p">:</span> <span class="n">Application</span><span class="p">(</span><span class="n">FunctionHandler</span><span class="p">(</span><span class="n">app</span><span class="p">))}</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span><span class="n">app_dict</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5006</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s1">&#39;/serial-dashboard&#39;</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">run_until_shutdown</span><span class="p">()</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -209,7 +213,7 @@ milliseconds.</p></li>
       </span></p>
   </div>
 
-   <jinja2.runtime.BlockReference object at 0x7ffe21c944c0> 
+   <jinja2.runtime.BlockReference object at 0x7f99d09f83d0> 
 
 <p>© 2021 Justin Bois.</p>
 
