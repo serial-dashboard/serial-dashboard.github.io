@@ -1,0 +1,25 @@
+﻿serial\_dashboard.SerialConnection
+==================================
+
+.. currentmodule:: serial_dashboard
+
+.. autoclass:: SerialConnection
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SerialConnection.__init__
+      ~SerialConnection.connect
+      ~SerialConnection.disconnect
+      ~SerialConnection.portsearch
+   
+   
+
+   
+   
+   

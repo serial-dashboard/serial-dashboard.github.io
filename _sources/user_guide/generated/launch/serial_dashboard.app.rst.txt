@@ -1,0 +1,6 @@
+﻿serial\_dashboard.app
+=====================
+
+.. currentmodule:: serial_dashboard
+
+.. autofunction:: app

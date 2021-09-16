@@ -1,0 +1,6 @@
+﻿serial\_dashboard.comms.handshake\_board
+========================================
+
+.. currentmodule:: serial_dashboard.comms
+
+.. autofunction:: handshake_board

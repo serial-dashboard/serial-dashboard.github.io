@@ -1,0 +1,6 @@
+﻿serial\_dashboard.comms.daq\_stream
+===================================
+
+.. currentmodule:: serial_dashboard.comms
+
+.. autofunction:: daq_stream

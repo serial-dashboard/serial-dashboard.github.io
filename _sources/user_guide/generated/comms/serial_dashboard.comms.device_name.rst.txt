@@ -1,0 +1,6 @@
+﻿serial\_dashboard.comms.device\_name
+====================================
+
+.. currentmodule:: serial_dashboard.comms
+
+.. autofunction:: device_name

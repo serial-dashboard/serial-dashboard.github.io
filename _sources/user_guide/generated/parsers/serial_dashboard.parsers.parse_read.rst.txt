@@ -1,0 +1,6 @@
+﻿serial\_dashboard.parsers.parse\_read
+=====================================
+
+.. currentmodule:: serial_dashboard.parsers
+
+.. autofunction:: parse_read

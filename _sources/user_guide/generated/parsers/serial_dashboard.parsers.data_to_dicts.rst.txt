@@ -1,0 +1,6 @@
+﻿serial\_dashboard.parsers.data\_to\_dicts
+=========================================
+
+.. currentmodule:: serial_dashboard.parsers
+
+.. autofunction:: data_to_dicts

@@ -1,0 +1,6 @@
+﻿serial\_dashboard.launch
+========================
+
+.. currentmodule:: serial_dashboard
+
+.. autofunction:: launch

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>serial-dashbaord: A browser-based serial monitor and plotter &mdash; serial-dashboard  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="getting_started/installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F0F0F0" >
+            <a href="#" class="icon icon-home"> serial-dashboard
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/purpose.html">Purpose and contents</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/launch.html">Launching a dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/usage.html">Using a dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/api.html">API Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">License and citation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="credits_and_citation.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits_and_citation.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits_and_citation.html#citing-serial-dashboard">Citing serial-dashboard</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #F0F0F0" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">serial-dashboard</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+<li><a href="https://github.com/justinbois/serial-dashboard">serial-dashboard on GitHub</a></li>
+
+  <li class="wy-breadcrumbs-aside">
+    
+        
+        
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+        
+      
+    
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="serial-dashbaord-a-browser-based-serial-monitor-and-plotter">
+<h1>serial-dashbaord: A browser-based serial monitor and plotter<a class="headerlink" href="#serial-dashbaord-a-browser-based-serial-monitor-and-plotter" title="Permalink to this headline"></a></h1>
+<p>This package provides a browser-based dashboard as a Python replacement for the serial plotter and serial monitor of the Arduino IDE. It includes extra utilities, such as plotting of a time axis (as opposed to strictly sample number), ability to save data transferred over serial, and ability to start and stop streams.</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/purpose.html">Purpose and contents</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/launch.html">Launching a dashboard</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/launch.html#from-the-command-line">From the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/launch.html#from-python">From Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/launch.html#from-within-a-jupyter-notebook">From within a Jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/launch.html#using-bokeh-serve">Using bokeh serve</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/usage.html">Using a dashboard</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/usage.html#a-sample-device">A sample device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/usage.html#dashboard-layout">Dashboard layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/usage.html#shutting-down-a-dashboard">Shutting down a dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/api.html#dashboard-builder-and-launcher">Dashboard builder and launcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/api.html#serial-communication-utilities">Serial communication utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/api.html#parsers">Parsers</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">License and citation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="credits_and_citation.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits_and_citation.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credits_and_citation.html#citing-serial-dashboard">Citing serial-dashboard</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started/installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <span class="lastupdated">Last updated on Sep 16, 2021.
+      </span></p>
+  </div>
+
+   <jinja2.runtime.BlockReference object at 0x7ffe216fcdf0> 
+
+<p>© 2021 Justin Bois.</p>
+
+<p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
+
+<br />
+
+<p>Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>.
+
+ 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>

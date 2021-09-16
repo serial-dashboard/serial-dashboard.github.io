@@ -1,0 +1,6 @@
+﻿serial\_dashboard.comms.port\_search
+====================================
+
+.. currentmodule:: serial_dashboard.comms
+
+.. autofunction:: port_search

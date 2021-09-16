@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>serial_dashboard.SerialConnection &mdash; serial-dashboard  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="serial_dashboard.comms.read_all" href="serial_dashboard.comms.read_all.html" />
+    <link rel="prev" title="serial_dashboard.app" href="../launch/serial_dashboard.app.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F0F0F0" >
+            <a href="../../../index.html" class="icon icon-home"> serial-dashboard
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/purpose.html">Purpose and contents</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../launch.html">Launching a dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Using a dashboard</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#dashboard-builder-and-launcher">Dashboard builder and launcher</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../api.html#serial-communication-utilities">Serial communication utilities</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">serial_dashboard.SerialConnection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="serial_dashboard.comms.read_all.html">serial_dashboard.comms.read_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="serial_dashboard.comms.read_all_newlines.html">serial_dashboard.comms.read_all_newlines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="serial_dashboard.comms.device_name.html">serial_dashboard.comms.device_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="serial_dashboard.comms.handshake_board.html">serial_dashboard.comms.handshake_board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="serial_dashboard.comms.daq_stream.html">serial_dashboard.comms.daq_stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="serial_dashboard.comms.port_search.html">serial_dashboard.comms.port_search</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#parsers">Parsers</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">License and citation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credits_and_citation.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../credits_and_citation.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../credits_and_citation.html#citing-serial-dashboard">Citing serial-dashboard</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #F0F0F0" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">serial-dashboard</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+<li><a href="https://github.com/justinbois/serial-dashboard">serial-dashboard on GitHub</a></li>
+
+  <li class="wy-breadcrumbs-aside">
+    
+        
+        
+            <a href="../../../_sources/user_guide/generated/comms/serial_dashboard.SerialConnection.rst.txt" rel="nofollow"> View page source</a>
+        
+      
+    
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="serial-dashboard-serialconnection">
+<h1>serial_dashboard.SerialConnection<a class="headerlink" href="#serial-dashboard-serialconnection" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">serial_dashboard.</span></span><span class="sig-name descname"><span class="pre">SerialConnection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baudrate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">115200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">daq_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port_search_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytesize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'N'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopbits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#serial_dashboard.SerialConnection" title="Permalink to this definition"></a></dt>
+<dd><p>Class containing details about a serial connection.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.ser">
+<span class="sig-name descname"><span class="pre">ser</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.ser" title="Permalink to this definition"></a></dt>
+<dd><p>Serial connection to a device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>serial.Serial instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.port">
+<span class="sig-name descname"><span class="pre">port</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.port" title="Permalink to this definition"></a></dt>
+<dd><p>Name of the port of the connection. This is not the device name,
+but a descriptive name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.baudrate">
+<span class="sig-name descname"><span class="pre">baudrate</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.baudrate" title="Permalink to this definition"></a></dt>
+<dd><p>Baud rate of the connection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.bytesize">
+<span class="sig-name descname"><span class="pre">bytesize</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.bytesize" title="Permalink to this definition"></a></dt>
+<dd><p>Number of data bits. Possible values: serial.FIVEBITS,
+serial.SIXBITS, serial.SEVENBITS, serial.EIGHTBITS</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.parity">
+<span class="sig-name descname"><span class="pre">parity</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.parity" title="Permalink to this definition"></a></dt>
+<dd><p>Enable parity checking. Possible values: serial.PARITY_NONE,
+serial.PARITY_EVEN, serial.PARITY_ODD, serial.PARITY_MARK,
+serial.PARITY_SPACE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.stopbits">
+<span class="sig-name descname"><span class="pre">stopbits</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.stopbits" title="Permalink to this definition"></a></dt>
+<dd><p>Number of stop bits. Possible values: serial.STOPBITS_ONE,
+serial.STOPBITS_ONE_POINT_FIVE, serial.STOPBITS_TWO</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.ports">
+<span class="sig-name descname"><span class="pre">ports</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.ports" title="Permalink to this definition"></a></dt>
+<dd><p>List of ports that are available. Each entry is a
+serial.tools.list_ports_common.ListPortInfo instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.available_ports">
+<span class="sig-name descname"><span class="pre">available_ports</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.available_ports" title="Permalink to this definition"></a></dt>
+<dd><p>A dictionary with the descriptive port names as keys and strings
+with the name of the ports such that they can be opened with
+<cite>serial.Serial()</cite> as values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.reverse_available_ports">
+<span class="sig-name descname"><span class="pre">reverse_available_ports</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.reverse_available_ports" title="Permalink to this definition"></a></dt>
+<dd><p>A dictionary with the descriptive port names as values and
+strings with the name of the ports such that they can be opened
+with <cite>serial.Serial()</cite> as keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.port_status">
+<span class="sig-name descname"><span class="pre">port_status</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.port_status" title="Permalink to this definition"></a></dt>
+<dd><p>The status of the port. Either “disconnected”, “establishing”,
+“connected”, or “failed”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.daq_task">
+<span class="sig-name descname"><span class="pre">daq_task</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.daq_task" title="Permalink to this definition"></a></dt>
+<dd><p>Task for data acquisition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>async task</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.daq_delay">
+<span class="sig-name descname"><span class="pre">daq_delay</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.daq_delay" title="Permalink to this definition"></a></dt>
+<dd><p>Approximate time, in milliseconds, between data acquisitions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.port_search_task">
+<span class="sig-name descname"><span class="pre">port_search_task</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.port_search_task" title="Permalink to this definition"></a></dt>
+<dd><p>Task for checking for available ports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>async task</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.port_search_delay">
+<span class="sig-name descname"><span class="pre">port_search_delay</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.port_search_delay" title="Permalink to this definition"></a></dt>
+<dd><p>Approximate time, in milliseconds, between checks of available
+ports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.kill_app">
+<span class="sig-name descname"><span class="pre">kill_app</span></span><a class="headerlink" href="#serial_dashboard.SerialConnection.kill_app" title="Permalink to this definition"></a></dt>
+<dd><p>If True, kill the connect/app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baudrate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">115200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">daq_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port_search_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytesize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'N'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopbits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#serial_dashboard.SerialConnection.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Create an instance storing information about a serial
+connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> (<em>str</em><em>, </em><em>default None</em>) – If given, name of the port to connect to. If None, no device
+is connected.</p></li>
+<li><p><strong>baudrate</strong> (<em>int</em>) – Baud rate of the connection</p></li>
+<li><p><strong>daq_delay</strong> (<em>float</em>) – Approximate time, in milliseconds, between data acquisitions.</p></li>
+<li><p><strong>bytesize</strong> (<em>int</em>) – Number of data bits. Possible values: serial.FIVEBITS,
+serial.SIXBITS, serial.SEVENBITS, serial.EIGHTBITS</p></li>
+<li><p><strong>parity</strong> (<em>int</em>) – Enable parity checking. Possible values: serial.PARITY_NONE,
+serial.PARITY_EVEN, serial.PARITY_ODD, serial.PARITY_MARK,
+serial.PARITY_SPACE.</p></li>
+<li><p><strong>stopbits</strong> (<em>int</em>) – Number of stop bits. Possible values: serial.STOPBITS_ONE,
+serial.STOPBITS_ONE_POINT_FIVE, serial.STOPBITS_TWO</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#serial_dashboard.SerialConnection.__init__" title="serial_dashboard.SerialConnection.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([port, baudrate, daq_delay, …])</p></td>
+<td><p>Create an instance storing information about a serial connection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#serial_dashboard.SerialConnection.connect" title="serial_dashboard.SerialConnection.connect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">connect</span></code></a>(port[, allow_disconnect, handshake])</p></td>
+<td><p>Connect to a port.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#serial_dashboard.SerialConnection.disconnect" title="serial_dashboard.SerialConnection.disconnect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disconnect</span></code></a>()</p></td>
+<td><p>Disconnect port.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#serial_dashboard.SerialConnection.portsearch" title="serial_dashboard.SerialConnection.portsearch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">portsearch</span></code></a>([on_change])</p></td>
+<td><p>Search for ports and update port information.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_disconnect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handshake</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#serial_dashboard.SerialConnection.connect" title="Permalink to this definition"></a></dt>
+<dd><p>Connect to a port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> (<em>str</em><em>, </em><em>int</em><em>, or </em><em>serial.tools.list_ports_common.ListPortInfo instance</em>) – Port to which to connect. If an int, connect to port given
+by self.ports[port].</p></li>
+<li><p><strong>allow_disconnect</strong> (<em>bool</em><em>, </em><em>default True</em>) – If already connected to a port, allow disconnection. If
+False, raise an exception if already connected.</p></li>
+<li><p><strong>handshake</strong> (<em>bool</em><em>, </em><em>default True</em>) – If True, “handshake” with the connected device by closing,
+reopening connection waiting a second, and then clearing
+the input buffer.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serial_dashboard.SerialConnection.disconnect" title="Permalink to this definition"></a></dt>
+<dd><p>Disconnect port.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="serial_dashboard.SerialConnection.portsearch">
+<span class="sig-name descname"><span class="pre">portsearch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on_change</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#serial_dashboard.SerialConnection.portsearch" title="Permalink to this definition"></a></dt>
+<dd><p>Search for ports and update port information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>on_change</strong> (<em>bool</em><em>, </em><em>default True</em>) – If True, only update <cite>ports</cite>, <cite>available_ports</cite>, and
+<cite>reverse_available_ports</cite> attributes if there was a change
+in the available ports.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../launch/serial_dashboard.app.html" class="btn btn-neutral float-left" title="serial_dashboard.app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="serial_dashboard.comms.read_all.html" class="btn btn-neutral float-right" title="serial_dashboard.comms.read_all" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <span class="lastupdated">Last updated on Sep 16, 2021.
+      </span></p>
+  </div>
+
+   <jinja2.runtime.BlockReference object at 0x7ffe2155a880> 
+
+<p>© 2021 Justin Bois.</p>
+
+<p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
+
+<br />
+
+<p>Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>.
+
+ 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>

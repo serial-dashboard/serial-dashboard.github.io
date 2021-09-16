@@ -1,0 +1,6 @@
+﻿serial\_dashboard.parsers.fill\_nans
+====================================
+
+.. currentmodule:: serial_dashboard.parsers
+
+.. autofunction:: fill_nans

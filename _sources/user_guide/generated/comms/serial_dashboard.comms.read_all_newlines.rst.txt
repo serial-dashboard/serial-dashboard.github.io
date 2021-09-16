@@ -1,0 +1,6 @@
+﻿serial\_dashboard.comms.read\_all\_newlines
+===========================================
+
+.. currentmodule:: serial_dashboard.comms
+
+.. autofunction:: read_all_newlines

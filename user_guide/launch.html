@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launching a dashboard &mdash; serial-dashboard  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using a dashboard" href="usage.html" />
+    <link rel="prev" title="Purpose and contents" href="../getting_started/purpose.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F0F0F0" >
+            <a href="../index.html" class="icon icon-home"> serial-dashboard
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/purpose.html">Purpose and contents</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Launching a dashboard</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#from-the-command-line">From the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#from-python">From Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#from-within-a-jupyter-notebook">From within a Jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-bokeh-serve">Using bokeh serve</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using a dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">License and citation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../credits_and_citation.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits_and_citation.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits_and_citation.html#citing-serial-dashboard">Citing serial-dashboard</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #F0F0F0" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">serial-dashboard</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+<li><a href="https://github.com/justinbois/serial-dashboard">serial-dashboard on GitHub</a></li>
+
+  <li class="wy-breadcrumbs-aside">
+    
+        
+        
+            <a href="../_sources/user_guide/launch.rst.txt" rel="nofollow"> View page source</a>
+        
+      
+    
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="launching-a-dashboard">
+<h1>Launching a dashboard<a class="headerlink" href="#launching-a-dashboard" title="Permalink to this headline"></a></h1>
+<p>A dashboard may be launched directly from the command line, using the <code class="docutils literal notranslate"><span class="pre">`bokeh</span> <span class="pre">serve</span></code> command line utility, or from a Python session or Jupyter notebook.</p>
+<section id="from-the-command-line">
+<h2>From the command line<a class="headerlink" href="#from-the-command-line" title="Permalink to this headline"></a></h2>
+<p>The most common use case is to launch the dashboard from the command line using the <code class="docutils literal notranslate"><span class="pre">serialdashboard</span></code> command. Its usage (which can also be ascertained by executing <code class="docutils literal notranslate"><span class="pre">serialdashboard</span> <span class="pre">--help</span></code> on the command line) is as follows.</p>
+<blockquote>
+<div><dl>
+<dt>Usage:</dt><dd><p>serialdashboard [OPTIONS]</p>
+</dd>
+<dt>Options:</dt><dd><dl class="option-list">
+<dt><kbd><span class="option">--port <var>INTEGER</var></span></kbd></dt>
+<dd><p>port at localhost for serving dashboard (default
+5006)</p>
+</dd>
+<dt><kbd><span class="option">--browser <var>TEXT</var></span></kbd></dt>
+<dd><p>browser to use for dashboard (defaults to OS
+default)</p>
+</dd>
+<dt><kbd><span class="option">--baudrate <var>INTEGER</var></span></kbd></dt>
+<dd><p>baud rate of serial connection (default 115200)</p>
+</dd>
+<dt><kbd><span class="option">--maxcols <var>INTEGER</var></span></kbd></dt>
+<dd><p>maximum number of columns of data coming off of
+the board (default 10)</p>
+</dd>
+<dt><kbd><span class="option">--delimiter <var>TEXT</var></span></kbd></dt>
+<dd><p>delimiter of data coming off of the board
+(default comma)</p>
+</dd>
+<dt><kbd><span class="option">--columnlabels <var>TEXT</var></span></kbd></dt>
+<dd><p>labels for columns using delimiter specified with
+–delimiter flag (default is none)</p>
+</dd>
+<dt><kbd><span class="option">--timecolumn <var>TEXT</var></span></kbd></dt>
+<dd><p>column (zero-indexed) of incoming data that
+specifies time (default none)</p>
+</dd>
+<dt><kbd><span class="option">--timeunits <var>TEXT</var></span></kbd></dt>
+<dd><p>units of incoming time data (default ms)</p>
+</dd>
+<dt><kbd><span class="option">--rollover <var>INTEGER</var></span></kbd></dt>
+<dd><p>number of data points to be shown on a plot for
+each column (default 400)</p>
+</dd>
+<dt><kbd><span class="option">--glyph <var>TEXT</var></span></kbd></dt>
+<dd><p>which glyphs to display in the plotter; either
+lines, dots, or both (default lines)</p>
+</dd>
+<dt><kbd><span class="option">--inputtype <var>TEXT</var></span></kbd></dt>
+<dd><p>whether input is ascii or bytes (default ascii)</p>
+</dd>
+<dt><kbd><span class="option">--fileprefix <var>TEXT</var></span></kbd></dt>
+<dd><p>prefix of output files</p>
+</dd>
+<dt><kbd><span class="option">--daqdelay <var>INTEGER</var></span></kbd></dt>
+<dd><p>approximate delay in milliseconds for data
+acquisition from the board (default 20)</p>
+</dd>
+<dt><kbd><span class="option">--streamdelay <var>INTEGER</var></span></kbd></dt>
+<dd><p>delay in milliseconds between updates of the
+plotter and monitor (default 90)</p>
+</dd>
+<dt><kbd><span class="option">--portsearchdelay <var>INTEGER</var></span></kbd></dt>
+<dd><p>delay in milliseconds for checks of serial
+devices (default 1000)</p>
+</dd>
+<dt><kbd><span class="option">--help</span></kbd></dt>
+<dd><p>Show this message and exit.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">--port</span></code> and <code class="docutils literal notranslate"><span class="pre">--browser</span></code> flags determine at which port and in which browser the dashboard is to live. Once the dashboard is launched, these cannot be changed.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--daqdelay</span></code>, <code class="docutils literal notranslate"><span class="pre">--streamdelay</span></code> and <code class="docutils literal notranslate"><span class="pre">--portsearchdelay</span></code> flags also cannot be changed once the dashboard is launched. The values controlled by all other flags can be adjusted from within the dashboard; the flags serve only to populate the initial settings. This can be convenient if the dashboard is being used for a project with known properties. For example, it is convenient to launch a dashboard controlling and Arduino board with the sample sketch (described <a class="reference internal" href="usage.html#a-sample-device"><span class="std std-ref">here</span></a>) using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>serialdashboard --columnlabels <span class="s2">&quot;time (ms),signal,sine wave&quot;</span> --maxcols <span class="m">3</span> --timecolumn <span class="m">0</span>
+</pre></div>
+</div>
+</section>
+<section id="from-python">
+<h2>From Python<a class="headerlink" href="#from-python" title="Permalink to this headline"></a></h2>
+<p>From an instance of Python or IPython, you can launch the serial dashboard with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">serial_dashboard</span>
+<span class="n">serial_dashboard</span><span class="o">.</span><span class="n">launch</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">serial_dashboard.launch()</span></code> function has the same keyword arguments as the flags for the command line interface, above (with the exception of <code class="docutils literal notranslate"><span class="pre">help</span></code>). For example, to launch a dashboard with the sample sketch, one would use</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">serial_dashboard</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">columnlabels</span><span class="o">=</span><span class="s2">&quot;time (ms),signal,sine wave&quot;</span><span class="p">,</span> <span class="n">maxcols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">timecolumn</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="from-within-a-jupyter-notebook">
+<h2>From within a Jupyter notebook<a class="headerlink" href="#from-within-a-jupyter-notebook" title="Permalink to this headline"></a></h2>
+<p>A dashboard may live within a Jupyter notebook. To enable this, use the <code class="docutils literal notranslate"><span class="pre">serial_dashboard.app()</span></code> function. (You will need to have <a class="reference external" href="https://github.com/bokeh/jupyter_bokeh">jupyter_bokeh</a> installed.)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">serial_dashboard</span>
+<span class="kn">import</span> <span class="nn">bokeh.io</span>
+
+<span class="n">bokeh</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">output_notebook</span><span class="p">()</span>
+
+<span class="n">dashboard_app</span> <span class="o">=</span> <span class="n">serial_dashboard</span><span class="o">.</span><span class="n">app</span><span class="p">()</span>
+
+<span class="n">bokeh</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">dashboard_app</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It you want the same defaults as in the above example, use</p>
+</section>
+<section id="using-bokeh-serve">
+<h2>Using bokeh serve<a class="headerlink" href="#using-bokeh-serve" title="Permalink to this headline"></a></h2>
+<p>Many users serve Bokeh-based apps using the <code class="docutils literal notranslate"><span class="pre">bokeh</span> <span class="pre">serve</span></code> command line tool. To launch a dashboard this way, you need to make a script per the specification of the <code class="docutils literal notranslate"><span class="pre">bokeh</span> <span class="pre">serve</span></code> tool. Such a script is as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bokeh.plotting</span>
+<span class="kn">import</span> <span class="nn">serial_dashboard</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">serial_dashboard</span><span class="o">.</span><span class="n">app</span><span class="p">()</span>
+
+<span class="n">app</span><span class="p">(</span><span class="n">bokeh</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">curdoc</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Then, to launch the app, save the script in a file (say, named <code class="docutils literal notranslate"><span class="pre">launchscript.py</span></code>) and do the following on the command line.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bokeh serve --show launchscript.py
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../getting_started/purpose.html" class="btn btn-neutral float-left" title="Purpose and contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Using a dashboard" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <span class="lastupdated">Last updated on Sep 16, 2021.
+      </span></p>
+  </div>
+
+   <jinja2.runtime.BlockReference object at 0x7ffe21e81fd0> 
+
+<p>© 2021 Justin Bois.</p>
+
+<p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
+
+<br />
+
+<p>Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>.
+
+ 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>

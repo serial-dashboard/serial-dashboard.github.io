@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using a dashboard &mdash; serial-dashboard  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Reference" href="api.html" />
+    <link rel="prev" title="Launching a dashboard" href="launch.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F0F0F0" >
+            <a href="../index.html" class="icon icon-home"> serial-dashboard
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/purpose.html">Purpose and contents</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="launch.html">Launching a dashboard</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using a dashboard</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-sample-device">A sample device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dashboard-layout">Dashboard layout</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#port-connectivity-box">Port connectivity box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-specs-box">Plot specs box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#input-box">Input box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial-plotter-box">Serial plotter box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial-monitor-box">Serial monitor box</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#shutting-down-a-dashboard">Shutting down a dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">License and citation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../credits_and_citation.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits_and_citation.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits_and_citation.html#citing-serial-dashboard">Citing serial-dashboard</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #F0F0F0" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">serial-dashboard</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+<li><a href="https://github.com/justinbois/serial-dashboard">serial-dashboard on GitHub</a></li>
+
+  <li class="wy-breadcrumbs-aside">
+    
+        
+        
+            <a href="../_sources/user_guide/usage.rst.txt" rel="nofollow"> View page source</a>
+        
+      
+    
+  </li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="using-a-dashboard">
+<h1>Using a dashboard<a class="headerlink" href="#using-a-dashboard" title="Permalink to this headline"></a></h1>
+<p>The documentation below demonstrates and discusses use of the dashboard GUI.</p>
+<section id="a-sample-device">
+<h2>A sample device<a class="headerlink" href="#a-sample-device" title="Permalink to this headline"></a></h2>
+<p>In the examples, the dashboard uses a real device, which you may wish to construct to practice using the dashboard. I use an Arduino Uno, but you can use any board with a similar setup.</p>
+<img alt="../_images/example_graphical_schematic_bb.svg" src="../_images/example_graphical_schematic_bb.svg" /><p>This simple test circuit has a potentiometer whose output is connected to an analog input. Two LEDs are under control of two digital pins. The following sketch is uploaded to the Arduino Uno board.</p>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">voltagePin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A0</span><span class="p">;</span><span class="w"></span>
+
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">redLEDPin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">yellowLEDPin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">HANDSHAKE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">REQUEST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">RED_LED_ON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">RED_LED_OFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">GREEN_LED_ON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">GREEN_LED_OFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">ON_REQUEST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">STREAM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">READ_DAQ_DELAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"></span>
+
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">TOGGLE_SINE_WAVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w"></span>
+
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">HANDSHAKE_ASCII</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">48</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">REQUEST_ASCII</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">49</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">RED_LED_ON_ASCII</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">RED_LED_OFF_ASCII</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">51</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">GREEN_LED_ON_ASCII</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">52</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">GREEN_LED_OFF_ASCII</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">53</span><span class="p">;</span><span class="w"></span>
+
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">ON_REQUEST_ASCII</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">54</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">STREAM_ASCII</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">55</span><span class="p">;</span><span class="w"></span>
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">READ_DAQ_DELAY_ASCII</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">56</span><span class="p">;</span><span class="w"></span>
+
+<span class="kr">const</span><span class="w"> </span><span class="kr">int</span><span class="w"> </span><span class="n">TOGGLE_SINE_WAVE_ASCII</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">57</span><span class="p">;</span><span class="w"></span>
+
+<span class="kr">String</span><span class="w"> </span><span class="n">daqDelayStr</span><span class="p">;</span><span class="w"></span>
+
+<span class="kr">int</span><span class="w"> </span><span class="n">inByte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="kr">int</span><span class="w"> </span><span class="n">daqMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ON_REQUEST</span><span class="p">;</span><span class="w"></span>
+<span class="kr">int</span><span class="w"> </span><span class="n">daqDelay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
+
+<span class="kr">unsigned</span><span class="w"> </span><span class="kr">long</span><span class="w"> </span><span class="n">timeOfLastDAQ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="kr">bool</span><span class="w"> </span><span class="n">showSineWave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">true</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="kr">unsigned</span><span class="w"> </span><span class="kr">long</span><span class="w"> </span><span class="n">printOutput</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kr">String</span><span class="w"> </span><span class="n">outstr</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// read value from analog pin</span>
+<span class="w">  </span><span class="kr">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">analogRead</span><span class="p">(</span><span class="n">voltagePin</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Time of acquisition</span>
+<span class="w">  </span><span class="kr">unsigned</span><span class="w"> </span><span class="kr">long</span><span class="w"> </span><span class="n">timeMilliseconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">millis</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Generate sine wave</span>
+<span class="w">  </span><span class="kr">int</span><span class="w"> </span><span class="n">sineWave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kr">int</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="mf">1.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sin</span><span class="p">(((</span><span class="kr">float</span><span class="p">)</span><span class="w"> </span><span class="n">timeMilliseconds</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">PI</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1023.0</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Write the result</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">Serial</span><span class="p">.</span><span class="n">availableForWrite</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">showSineWave</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">outstr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">String</span><span class="p">(</span><span class="kr">String</span><span class="p">(</span><span class="n">timeMilliseconds</span><span class="p">,</span><span class="w"> </span><span class="n">DEC</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="kr">String</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">DEC</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="kr">String</span><span class="p">(</span><span class="n">sineWave</span><span class="p">,</span><span class="w"> </span><span class="n">DEC</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">outstr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">String</span><span class="p">(</span><span class="kr">String</span><span class="p">(</span><span class="n">timeMilliseconds</span><span class="p">,</span><span class="w"> </span><span class="n">DEC</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="kr">String</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">DEC</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="n">outstr</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Return the time of acquisition</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">timeMilliseconds</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="kr">void</span><span class="w"> </span><span class="nb">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Set LEDs to off</span>
+<span class="w">  </span><span class="nf">pinMode</span><span class="p">(</span><span class="n">redLEDPin</span><span class="p">,</span><span class="w"> </span><span class="kr">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="nf">pinMode</span><span class="p">(</span><span class="n">yellowLEDPin</span><span class="p">,</span><span class="w"> </span><span class="kr">OUTPUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="nf">digitalWrite</span><span class="p">(</span><span class="n">redLEDPin</span><span class="p">,</span><span class="w"> </span><span class="kr">LOW</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="nf">digitalWrite</span><span class="p">(</span><span class="n">yellowLEDPin</span><span class="p">,</span><span class="w"> </span><span class="kr">LOW</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// initialize serial communication</span>
+<span class="w">  </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="kr">void</span><span class="w"> </span><span class="nb">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// If we&#39;re auto-transferring data (streaming mode)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">daqMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">STREAM</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">timeOfLastDAQ</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">daqDelay</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">timeOfLastDAQ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">printOutput</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Check if data has been sent to Arduino and respond accordingly</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">Serial</span><span class="p">.</span><span class="nf">available</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Read in request</span>
+<span class="w">    </span><span class="n">inByte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">read</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Handshake</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">HANDSHAKE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">HANDSHAKE_ASCII</span><span class="p">){</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">Serial</span><span class="p">.</span><span class="n">availableForWrite</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="s">&quot;Handshake message received.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// If data is requested, fetch it and write it</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">REQUEST</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">REQUEST_ASCII</span><span class="p">)</span><span class="w"> </span><span class="n">printOutput</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Switch daqMode</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ON_REQUEST</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ON_REQUEST_ASCII</span><span class="p">)</span><span class="w"> </span><span class="n">daqMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ON_REQUEST</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">STREAM</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">STREAM_ASCII</span><span class="p">)</span><span class="w"> </span><span class="n">daqMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">STREAM</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Read in DAQ delay</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">READ_DAQ_DELAY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">READ_DAQ_DELAY_ASCII</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nf">Serial</span><span class="p">.</span><span class="nf">available</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">daqDelayStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Serial</span><span class="p">.</span><span class="nf">readStringUntil</span><span class="p">(</span><span class="sc">&#39;x&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">daqDelay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">daqDelayStr</span><span class="p">.</span><span class="n">toInt</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Toggle display of the sine wave</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TOGGLE_SINE_WAVE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TOGGLE_SINE_WAVE_ASCII</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">showSineWave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">showSineWave</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="kr">false</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// else, turn LEDs on or off</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RED_LED_ON</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RED_LED_ON_ASCII</span><span class="p">)</span><span class="w"> </span><span class="nf">digitalWrite</span><span class="p">(</span><span class="n">redLEDPin</span><span class="p">,</span><span class="w"> </span><span class="kr">HIGH</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RED_LED_OFF</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RED_LED_OFF_ASCII</span><span class="p">)</span><span class="w"> </span><span class="nf">digitalWrite</span><span class="p">(</span><span class="n">redLEDPin</span><span class="p">,</span><span class="w"> </span><span class="kr">LOW</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">GREEN_LED_ON</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">GREEN_LED_ON_ASCII</span><span class="p">)</span><span class="w"> </span><span class="nf">digitalWrite</span><span class="p">(</span><span class="n">yellowLEDPin</span><span class="p">,</span><span class="w"> </span><span class="kr">HIGH</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">GREEN_LED_OFF</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">inByte</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">GREEN_LED_OFF_ASCII</span><span class="p">)</span><span class="w"> </span><span class="nf">digitalWrite</span><span class="p">(</span><span class="n">yellowLEDPin</span><span class="p">,</span><span class="w"> </span><span class="kr">LOW</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>With this sketch, the board can take input as either bytes or as ASCII characters. In general, this is a good idea for ease of communication with a serial dashboard.</p>
+<p>The board sends three different values for each data acquisition. It sends the time of the sampling, the voltage measured from the analog input pin, and a fabricated sine wave. It is generally a good idea to use time stamps from the board and not from the computer receiving the serial data, since the time on the board is closer to when the measurement was actually made. The fabricated sine wave is to demonstrate display on the dashboard.</p>
+<p>The following input is accepted:</p>
+<ul class="simple">
+<li><p><strong>0</strong>: Ask the board to send a confirmation that it received a message.</p></li>
+<li><p><strong>1</strong>: Request a single set of time/voltage measurement/sine wave data.</p></li>
+<li><p><strong>2</strong>: Turn on the red LED.</p></li>
+<li><p><strong>3</strong>: Turn off the red LED.</p></li>
+<li><p><strong>4</strong>: Turn on the yellow LED.</p></li>
+<li><p><strong>5</strong>: Turn off the off LED.</p></li>
+<li><p><strong>6</strong>: Specify that data is only to be sent from the board upon request.</p></li>
+<li><p><strong>7</strong>: Specify that data is sent repeatedly from the board (streaming mode).</p></li>
+<li><p><strong>8</strong>: Specify that the next text, ending in <cite>x</cite>, will be the delay in milliseconds between data acquisition in streaming mode.</p></li>
+<li><p><strong>9</strong>: Toggles whether the sine wave should be sent or not.</p></li>
+</ul>
+<p>Finally, note that the baud rate is set to 115200 baud. The baud rate chose on the dashboard should match what the board is going to use.</p>
+</section>
+<section id="dashboard-layout">
+<h2>Dashboard layout<a class="headerlink" href="#dashboard-layout" title="Permalink to this headline"></a></h2>
+<p>Upon launch, the dashboard will look like this:</p>
+<img alt="../_images/dashboard_at_launch.png" src="../_images/dashboard_at_launch.png" />
+<p>With the exception of the big red <code class="docutils literal notranslate"><span class="pre">shut</span> <span class="pre">down</span> <span class="pre">dashboard</span></code> button, which has an obvious function, the dashboard is divided into boxes.</p>
+<section id="port-connectivity-box">
+<h3>Port connectivity box<a class="headerlink" href="#port-connectivity-box" title="Permalink to this headline"></a></h3>
+<p>The upper left box is the port connectivity box. Its elements are:</p>
+<ul class="simple">
+<li><p><strong>port</strong>: A pulldown menu that lists the available ports. You should select the port that is attached to the board you are interested in using for the dashboard.</p></li>
+<li><p><strong>baud rate</strong>: A pulldown menu of baud rates. The allowed values are 300, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 74880, 115200, 230400, 250000, 500000, 1000000, and 2000000.</p></li>
+<li><p><strong>connect</strong>: When pushed, makes the connection to the serial device at the selected port.</p></li>
+<li><p><strong>disconnect</strong>: When pushed, disconnects a connected board. Note that the <code class="docutils literal notranslate"><span class="pre">disconnect</span></code> button is grayed out upon launch, since it can only be pushed when a device is connected.</p></li>
+<li><p><strong>port status</strong>: Text describing the status of the port.</p></li>
+</ul>
+<p>When the <code class="docutils literal notranslate"><span class="pre">connect</span></code> button is pushed, the <code class="docutils literal notranslate"><span class="pre">port</span></code>, <code class="docutils literal notranslate"><span class="pre">baud</span> <span class="pre">rate</span></code>, and <code class="docutils literal notranslate"><span class="pre">connect</span></code> widgets are grayed out because they cannot be changed when connected to a device. The <code class="docutils literal notranslate"><span class="pre">disconnect</span></code> button becomes active, since you can now disconnect from a connected device. The <code class="docutils literal notranslate"><span class="pre">send</span></code> button in the input box (to the right of the port connectivity box) becomes active (it is inactive upon launch of the dashboard because no data can be sent when disconnected).</p>
+<p>When the <code class="docutils literal notranslate"><span class="pre">disconnect</span></code> button is pushed, the <code class="docutils literal notranslate"><span class="pre">port</span></code>, <code class="docutils literal notranslate"><span class="pre">baud</span> <span class="pre">rate</span></code>, and <code class="docutils literal notranslate"><span class="pre">connect</span></code> widgets are reactivated, and the <code class="docutils literal notranslate"><span class="pre">disconnect</span></code> and <code class="docutils literal notranslate"><span class="pre">send</span></code> buttons are deactivated.</p>
+<p>Importantly, when the <code class="docutils literal notranslate"><span class="pre">connect</span></code> button is pushed for the first time, the <code class="docutils literal notranslate"><span class="pre">maximum</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">columns</span></code> selector in the plotter specification box (immediately below the port connectivity box) becomes inactive. It will <em>not</em> become active again for the rest of the lifetime of the dashboard. This is due to the underlying data structure of the plot generation process. So, you should think carefully about how many columns you might have in incoming data (three, in the sample case above) and make the appropriate selection <em>before</em> pushing the <code class="docutils literal notranslate"><span class="pre">connect</span></code> button.</p>
+<hr class="docutils" />
+<p>Before proceeding to the remaining portions of the dashboard, let’s look at the dashboard after we have set the parameters as we for the sample case, turned on data streaming, and had some live plotting and serial monitoring.</p>
+<img alt="../_images/dashboard_in_action.png" src="../_images/dashboard_in_action.png" />
+</section>
+<section id="plot-specs-box">
+<h3>Plot specs box<a class="headerlink" href="#plot-specs-box" title="Permalink to this headline"></a></h3>
+<p>The plot specs box is under the port connectivity box and contains specifications for plot generation. Its elements are:</p>
+<ul class="simple">
+<li><p><strong>maximum number of columns</strong>: A selector for the maximum number of columns, or different numbers in a single data acquisition from the board, that are expected. As described above, once a connection to a device is made, this choice is locked in, so think carefully before making a connection.</p></li>
+<li><p><strong>delimiter</strong>: Delimiter of data coming off of the board. In looking at the serial monitor, we see that we have appropriately chosen a comma, since the three columns (time, signal, and a fabricated sine wave) are separated by commas.</p></li>
+<li><p><strong>columns labels</strong>: Labels for columns. These labels are used to generate a legend in the plotter and also as column headings when saving the data on the plot as a CSV file.</p></li>
+<li><p><strong>time column</strong>: column (zero-indexed) of incoming data that specifies time. If “none” is selected, the “time” axis on the plot is the sample number.</p></li>
+<li><p><strong>time units</strong>: Units of incoming time data. This is only active if the <code class="docutils literal notranslate"><span class="pre">time</span> <span class="pre">column</span></code> selector is an integer and not “none.”</p></li>
+<li><p><strong>plot rollover</strong>: Number of data points to be shown on a plot for each column</p></li>
+</ul>
+<p>With the exception of <code class="docutils literal notranslate"><span class="pre">maximum</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">columns</span></code>, all of these values may be changed in a live dashboard.</p>
+</section>
+<section id="input-box">
+<h3>Input box<a class="headerlink" href="#input-box" title="Permalink to this headline"></a></h3>
+<p>The input box is immediately to the right of the port connectivity box. The text box allows for input of any text. Only once the <code class="docutils literal notranslate"><span class="pre">send</span></code> button is pushed (<em>not</em> upon pressing enter on the keyboard) will the text be sent out to the connected device. The text will be sent either as ASCII text or as bytes, depending on the selection of the radio buttons at the right portion of the input box. Not that only integer values can be sent as bytes. This is part of the reason why it is useful to allow both bytes and ASCII text to be received and interpreted by connected devices, as we have done in the Arduino sketch above.</p>
+<p>In this case, I have sent <code class="docutils literal notranslate"><span class="pre">7</span></code> to the board, meaning that I want it streaming data. Prior to sending <code class="docutils literal notranslate"><span class="pre">7</span></code>, I sent <code class="docutils literal notranslate"><span class="pre">820x</span></code>, which, if you review the Arduino sketch above, instructed the board to acquire and send data every 20 milliseconds.</p>
+</section>
+<section id="serial-plotter-box">
+<h3>Serial plotter box<a class="headerlink" href="#serial-plotter-box" title="Permalink to this headline"></a></h3>
+<p>The serial plotter box has a live-updated graphical display of data coming off of the board. To the right are controls.</p>
+<ul class="simple">
+<li><p><strong>stream</strong>: This is a <em>toggle</em> button. When depressed (on), the plotter listens for data coming from the connected serial device. When off, the plotter ignores data coming from the device. Note that by default, the <code class="docutils literal notranslate"><span class="pre">steam</span></code> toggle is off. If you want live plotting, you need to press the <code class="docutils literal notranslate"><span class="pre">stream</span></code> button.</p></li>
+<li><p><strong>clear</strong>: Pressing this button will clear the plot. It will also clear data that is to be saved to a file.</p></li>
+<li><p><strong>save</strong>: Pressing this button will give a text window to enter the name of a file to save the data used to make the plot. All data that has streamed to the plot since the last push of the <code class="docutils literal notranslate"><span class="pre">clear</span></code> button is included; not just the data currently on the plot.</p></li>
+</ul>
+<p>The legend to the right of the plot is clickable; clicking on one of the glyphs will hide/unhide it in the plot.</p>
+<p>The radio buttons for “lines,” “dots,” or “both” to the far right of the serial plotter box indicate what glyphs you want to display on the plot.</p>
+<p>Note that the toolbar above the plot is always active, so you can zoom, pan, refresh, or save the plot.</p>
+<p>In the plot shown in the image above, I have selected the first (index 0) column to be the time column, so the time values (no sample numbers) are shown on the horizontal axis. The signal (blue curve) was generated by twisting the potentiometer on the board.</p>
+</section>
+<section id="serial-monitor-box">
+<h3>Serial monitor box<a class="headerlink" href="#serial-monitor-box" title="Permalink to this headline"></a></h3>
+<p>Below the serial plotter box is the serial monitor box. The text window contains a printout of the data coming off of the board. The <code class="docutils literal notranslate"><span class="pre">stream</span></code>, <code class="docutils literal notranslate"><span class="pre">clear</span></code>, and <code class="docutils literal notranslate"><span class="pre">save</span></code> buttons of the serial monitor box are analogous to those of the plotter box.</p>
+</section>
+</section>
+<section id="shutting-down-a-dashboard">
+<h2>Shutting down a dashboard<a class="headerlink" href="#shutting-down-a-dashboard" title="Permalink to this headline"></a></h2>
+<p>A dashboard is shut down by clicking the <code class="docutils literal notranslate"><span class="pre">shut</span> <span class="pre">down</span> <span class="pre">dashboard</span></code> button. You will be prompted to do the shutdown. Once shutdown, the dashboard cannot be revived; you should just close its tab in the browser.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="launch.html" class="btn btn-neutral float-left" title="Launching a dashboard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <span class="lastupdated">Last updated on Sep 16, 2021.
+      </span></p>
+  </div>
+
+   <jinja2.runtime.BlockReference object at 0x7ffe21f7d910> 
+
+<p>© 2021 Justin Bois.</p>
+
+<p>This document was prepared at <a rel="caltech" href="http://www.caltech.edu">Caltech</a> with financial support from the <a rel="rosen" href="http://rosen.caltech.edu">Donna and Benjamin M. Rosen Bioengineering Center</a>.</p>
+
+<br />
+
+<p>Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>.
+
+ 
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>  
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+
+</body>
+</html>
